@@ -1,0 +1,100 @@
+The bigger the data more better
+
+1. Loading the DataSet
+2. EDA
+	Record your observation
+	df.describe()
+	mean, std, outliers
+	look for min values
+	try your best to not remove any data
+3. Initial Modelling (Preprocessing data)
+	Dealing with imbalanced dataset
+	ML algorithm might get biased
+	
+	Try different models
+	Retrain the model
+	
+5. 	Improved modelling step
+	Hyper Parameter tuning
+	Cross validation method
+	Grid search (Industry standard)
+	
+6. Model Interpretation 
+	-Visualize Decision Tree
+	-Feature Importance
+	-Sit with your clients and stakeholders
+	
+7. Deployment
+	Streamlit- App framework
+	designed specially for machine learning engineers
+	
+	
+	
+For data imbalance
+from imblearn.over_sampling import SMOTE
+--uses ML models to create synthetic data
+-- machinelearningmastery.com SMOTE
+--oversampler = SMOTE()
+X,y =oversampler.fit_resample(X,y)
+y.value_counts()
+
+scaling data
+StandardScaler
+
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighhorsClassifier
+from sklearn.tree DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
+
+
+Pycaret
+Automates the entire lifecycle of data science (ML)
+
+
+
+
+
+
+
+
+
+
+Decision Tree
+
+1. There should be some mathematical basics at arriving
+at the order of Questions's -> Decision Rule
+
+2. Order of question can affect time at arriving at final
+decision (efficiency)
+
+3. We need historical labelled data
+	-Supervised algorithm
+	
+Produces decision rule (its in the form of a Tree)
+can explain the model prediction
+
+
+They create a rectangular regions in predictors space
+using partition lines that are parallel to axes
+
+for 3d we have parition planes
+
+this is an example of classification regression
+The decision is made by minimizing the Less Function 
+
+Rss  = Sum of (yi - y^)**2
+
+
+Works better in classification setup
+
+
+
+Classification Decision Tree
+-----------------------------
+
+1. Entropy - Measure of randomness of data
+2. Gini Index
+3. Information Gain
