@@ -1,0 +1,34 @@
+https://www.dataschool.io/15-hours-of-expert-machine-learning-videos/
+
+Handling Missing Values
+	dropna
+	Imputing -> SimpleImputer (Median, MostFrequent, Constant)
+	
+Handle Categorical Values
+	LabelEncoder
+	OneHotEncoder
+	getdummies
+	
+Scaling&Normalization
+	MinMaxScaler
+	Standard
+	Normalize
+	
+	
+	
+	
+Data Preprocessing
+Data Anlysis
+Model Building
+Evaluation
+Optimization
+Prediction
+Deployment
+
+1. Gather the data
+2. Prepare the data
+3. Select a model
+4. Train the model
+5. Evaluate the model
+6. Tune the parameters
+7. Get predictions
