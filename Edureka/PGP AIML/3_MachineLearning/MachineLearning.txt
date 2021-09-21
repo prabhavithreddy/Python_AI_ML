@@ -1,0 +1,32 @@
+AI - Artificial Intellegence - 
+ML - Machine Learning - 
+DS - Data Science - Data Insights
+DL - Deep Learning - Images or Text 
+
+What is ML
+	It is a software/program that can learn from experience
+	ML gives ability to learn from data without being explicitly programmed
+	A set of tools for making inferences and prediction from data
+	often inferences and prediction work togeather inferences help make prediction
+
+	Learn pattern from existing data and apply to new data, e.g. spam detection
+
+	Train -> Fit -> Predictions
+
+	Traditional programming
+
+	Data 	-> Computer	| -> Output
+	Program ->			|
+
+	Machine Learning
+
+	Data 	-> Computer	| -> Program
+	Output 		->			|
+
+	Example Square Root finder
+
+Deep Learning
+aka neural network where basic unit are neurons
+	Special area of ML and require more data
+	Best where input are images or text
+	e.g. predict box office revenue
