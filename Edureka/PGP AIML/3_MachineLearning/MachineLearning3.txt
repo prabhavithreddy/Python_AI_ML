@@ -1,0 +1,38 @@
+SMOT 
+	Synthetic Minority Oversampling Technique
+	Balance the outcome variable e.g. 0,1
+	
+	More the data better the predictions
+	
+Initial Modelling
+	Try different models
+	
+Retrain the model (Delta Data) (Data which is generated post training i.e. train new data again)
+Maintain the model by giving Delta Data
+
+Improved modelling steps
+	1. Hyper parameter tuning
+	2. Cross Validation
+	3. Grid Search
+	4. Model interpretation
+		Visualize (e.g. Decision Tree)
+		Feature Importances
+	5. Tools [Shap]
+	
+Deployment
+	Streamlit - App Framework to deploy model, designed specially for machine learning engineers
+	
+Lab - Solving Imbalanced dataset
+
+SVM requires scaling the data
+
+pycaret 
+	- Automates the ML workflow for all scikit learn library
+	- Supervised
+	- Unsupervised
+	- Automated Visualization
+	- Automated feature transformation
+	- Dimensionality reduction (PCA)
+	- data scaling
+	
+	

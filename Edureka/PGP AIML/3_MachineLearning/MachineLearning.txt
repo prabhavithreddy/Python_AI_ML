@@ -26,7 +26,132 @@ What is ML
 	Example Square Root finder
 
 Deep Learning
-aka neural network where basic unit are neurons
-	Special area of ML and require more data
-	Best where input are images or text
-	e.g. predict box office revenue
+	aka neural network where basic unit are neurons
+		Special area of ML and require more data
+		Best where input are images or text
+		e.g. predict box office revenue
+	
+Supervised Learning
+	Training data has both features and label
+	Given a set of features and label 
+	
+	Cost Function = 1/2*E(y - y^)** (mean square error)
+	y^ = b0 + b1x1 + b2x2+ .... + bnxn
+	
+	Goal
+		Automate time consuming or expensive manual task, eg. Doctor's Diagnosis
+		Make predictions about the future
+		Need labelled data
+
+UnSupervised Learning
+	No labels
+	Clustering - Groups of similar data
+	Outlier/Anomaly detection
+	|
+	|		**
+	|**		*
+	|**
+	|____________
+	Clustering
+	
+	
+	Model Evaluation
+	Classification
+		Accuracy
+		Precision - how accurate are model prediction
+		Recall - model's ability to recall genuine positive values
+		
+	Regression
+		Coefficient of determination(R2)
+		Mean Square Error
+		
+Supervised Learning Steps
+
+1. Data Preparation
+	* Query the data
+	* Clean the data 
+		- Missing Values
+		- ML Algos cannot work with NAN values
+		- Get compute ratio(Rm) = No of missing/Total no.of samples
+		- Rm is high then drop the column by consulting domain expert
+		- Rm is small use imputation (Mean, median, mode)
+		- Categorical -> label them as others or most frequent
+		- Outliers
+			Identify the outliers that are significantly outside the mean (-3,3)
+			Robust methods (Q1 - 1.5*IQR,Q3 + 1.5*IQR)
+	* Remove all characters that are not relevant to ML Algos
+	* Data Transformation 
+		- Encoding (Categorical Variables)
+			Label Encoding (Might be interpreted as order)
+			One Hot Encoding (Value would be 1 others would be 0)
+			Relative frequency (f1/n, f2/n)
+		
+		
+2. EDA - univariate and bi-variate, correlations
+		
+3. Feature Engineering
+	* transform features
+		- relevant (provides useful information for prediction)
+		- discriminant  (it makes difference among training examples)
+		- nonredundant (two features are telling same thing)
+	1. Feature construction e.g. datetime breakdown into hr, seconds etc
+	2. Scaling (Converts data to be in a specific range) (Xnew = (Xold - U)/std) or Z scores
+		Faster computation
+		more relevant results
+		StandardScaler (-3,3)
+		MinMaxScaler (0,1)
+	3. Log Transformation (natural log of the number)
+		improve normality of data (highly skewed to normal)
+		hetero scadascity
+	4. Dimension reduction
+		Process of reducing the number of features used in building the model
+		to keep only those features that are informative, discriminant and non-redundant
+	5. RFE (Recursive Feature Elimination)
+		Eliminates features one at a time
+	6. Variance threshold filter
+		Removes features that are close (very low variance)
+	7. Feature Extraction
+		Done when there are too many variables in the dataset (100's to 1000's)
+		Improve the model accuracy
+		Principal component analysis
+			Method of extracting important variables in the form of components from a large set of variables
+			A principal component is linear combination of original predictors
+			a. PC1 -> linear combinations of original predictor variables that capture maximum variance of dataset
+			b. PC2 -> Captures remaining variance in the dataset
+			PC2
+			|
+			|	 * * * * *
+			|  *
+			| * 
+			|*____________
+						PC1
+						
+4. Model Building with training data
+5. Model evaluation with test data
+6. Model optimization  - Hyperparameter tuning
+7. Model interpretation
+8. Deployment
+
+
+Model building algorithms
+
+Classification
+	- Logistic Regression
+	- K-Nearest Neighbors
+	- Decision Trees
+	- Random Forest
+	- Support Vector Machine
+	- Naive Bayes
+	
+Regression
+	- Linear Regression
+	- Lasso Regression (eliminating features)
+	- Decision Tree
+	- Support Vector Regression
+	- Random Forest Regressor
+	
+Clustering
+	- K-means
+	- Hierarchical Clustering
+	- DBScan
+	

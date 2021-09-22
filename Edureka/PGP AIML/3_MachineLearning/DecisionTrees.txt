@@ -1,0 +1,105 @@
+Decision Trees
+--------------
+Example (Having party on 16th Aug)
+												|
+												|
+									Is 16th is a holiday
+									/Y					\N
+							Do we have budget		Reschedule
+							/Y			\N
+						Organize		Reschedule
+
+	Set of Decision Rules (if else statements)
+
+	Which question we need to ask to take first decision?
+		Budget could be the first according to our understanding	
+		Order of question is based on priority
+		
+	1. There should be some mathematical basics at the arriving of the order of questions  -> Decision Rules
+	2. Order of question can affect the time taken to make a decision - Efficiency
+		Most important question first then next
+	3. We need historical labelled data - Supervised Data
+	4. This kind of rule based engine is called Decision Tree
+	5. We can explain the model - Visualize
+
+	Geometrically (R1, R2, R3 -> Regions)
+	Example: Employee leaving a company or not
+	
+	
+	X2
+	^ R1
+	| x	|		x		(y=0)
+	|x	|	x	R2	x
+	| x	|_____________
+	|	|	x x	R3		(y=1)
+	|	|
+	|	|		 x
+	------------------>X1
+		 X1
+	N-dimentional predictor space
+	
+	if x < x1 then y=0
+	
+	Question is which Xn has to be choosen (which split should be taken first)
+	
+1. Decision Trees create rectangular regions in predictors space using parition lines that are parallel to axis
+2. For 3 dimentional we use partition planes
+3. Works for both regression and classification
+4. Find the region where new point is going to fit in
+5. Gives the median/average value of Region 
+
+
+How does a Tree Splitting works
+
+	1. R1 = {x<4.5} 		-> y^ = 165K
+	2. R2 = {x>4.5 & y<118} -> y^ = 402K
+	3. R3 = {{x>4.5 & y>118}-> y^ = 845K
+	
+The decision is made by minimizing loss function
+The loss function is RSS(Residual Sum Squares)
+J
+E	E  (yi - y^j)
+j=1 i->Rj
+
+How does a classification decision tree works
+1. Entropy
+	Means the measure of randomness of data
+	Measure of impurity of the data
+		e.g. 	Bag A [4 Red, 5 Blue] -> P(Red) = 4/9
+				Bag B [7 Red, 1 Blue, 1 White] -> P(Red) = 7/9
+				
+				Bag A is impure since its probability is lower compared to Bag B
+				Bag B has less entropy compared to Bag A
+		if probability is 1/0 then it is pure
+	if entropy is high then impurity is high (P~0.5)
+	if entropy is low then impurity is low (P~ 1|0)
+	
+	E(x) 	= -Sigma Pilog2(Pi)
+			= -Plog2(P) - Qlog2(Q)
+			= All balls are red/ If all balls are not red
+			= -1 log2(1) - 0log2(0)
+			= 0
+	if P = 0.5 then E(x) = 1
+	
+	Graph
+ (1)|   ---
+	|  /   \
+	| /     \
+	|/_______\__
+	0	0.5  1
+	
+	Goal is to minimize the entropy 
+	Reduce Entropy to 0 by maximizing IG
+	
+	--- E1
+	/ \	
+   -- -- E2
+   /   \
+   
+   E1 - E2 = Information Gain
+   
+	
+2. Gini Index
+3. Information Gain
+	
+	
