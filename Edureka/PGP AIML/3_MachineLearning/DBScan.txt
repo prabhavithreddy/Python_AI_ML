@@ -1,0 +1,38 @@
+DBScan
+------
+
+Density based clustering 
+Works good if data has different sizez or densities 
+
+
+> Non - Globular
+
+arxiv.org -> DBScan Cluster
+
+	2. Hyperparameters 
+
+	1. EPS - Epsilon 
+	2. min_samples 
+
+
+	EPS - Like radius of a circle 
+		Is the most important hyperparameter
+		The maximum distance between two samples
+		
+	min_samples
+		No.of samples in the neighborhood to be considered as cluster
+		
+		
+Steps of DBScan
+---------------
+1. Randomly select a starting point with given EPS & min_samples
+	Each of the points again creats an EPS
+	
+2. Clusters are made using starting point
+	- leading to core points
+	- Border points 
+	
+	The process of using core points and border points grows until we reach convergence
+
+
+Most of the industry problems are slolved with KMeans, Hierarchial and DBScan

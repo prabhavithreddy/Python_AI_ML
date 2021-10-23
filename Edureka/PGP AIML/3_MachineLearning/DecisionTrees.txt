@@ -62,7 +62,7 @@ E	E  (yi - y^j)
 j=1 i->Rj
 
 How does a classification decision tree works
-1. Entropy
+1. Entropy (Randomness)
 	Means the measure of randomness of data
 	Measure of impurity of the data
 		e.g. 	Bag A [4 Red, 5 Blue] -> P(Red) = 4/9
@@ -100,6 +100,117 @@ How does a classification decision tree works
    
 	
 2. Gini Index
+
+	Measure of impurity/randomness
+	Xi, J-> No.of classes
+	
+			J
+	G = 1 - E	Pi2
+			i=1
+			
+	e.g. P= 0.5, Q = 0.5
+	
+	G 	= 1-(P**2 + Q**2)
+		= 1 - (0.5**2 + 0.5**2)
+		= 1 - (0.25 + 0.25)
+		= 0.5
+	
+	e.g. P=0, Q=1 then G = 0
+	
+			Graph
+   (0.5)|   ---
+		|  /   \
+		| /     \
+		|/_______\__
+		0	0.5  1
+
+	
+	Mathematically G & E are similar
+	G is computationally more efficient since it is just square
+	sklearn uses G as default (Criterion)
+	
 3. Information Gain
 	
+	It measures how good or bad any split will be based on impurity measure we have choosen
+	Root node is decided on information gain
+
+	Leaf nodes where decision are made
 	
+	IG = E1 - E2
+	IG = E(T) - E(T,X) where T is parent node, X is child node
+	IG inversly propotional to E
+	
+	Difference between entropy of upper node and lower node
+	
+	Decision Tree looks to maximize the IG
+	
+	GOAL -> Maximize IG
+	
+	
+Instructor explained an example using Excel
+
+
+Implementation of Decision Tree
+1. ID3 (Developed by Ross Quinlan) - Iterative Dichotomizer 3
+	Greedy approach at each node
+	check one node at a time
+	Made for classification 
+	Only Categorical Feature (e.g. binning a salary <40, 40<&<60 ...)
+	
+2. C4.5 (Classification)
+	Overcame the limitation of features to be categorical
+	Convert the trained trees to be a set of if-then rules
+	
+3. CART (Classification and Regression Tree)
+	Support numerical target variable
+	scikit learn uses CART
+	Good for both classification and regression 
+	
+Advantages of DT
+1. Very easy to interpret
+2. Very visual model we could display a tree
+3. Scaling is optional 
+4. Solve both classification and regression
+
+Cons
+1. Very prone to overfitting (poorly generalize)
+2. Easily affected by outliers (efficiency and computation time)
+
+Solution of overfitting is Pruning (trim)
+Hyperparameter(Max Depth) 
+
+1. max_depth
+2. min_samples_leaf (final node)
+	- minimum no.of samples to allow in each leaf
+		e.g. if it is 5 then it will not split beyond 5
+3. min_samples_split 
+	- minimum no.of samples required to split individual node(branch node)
+	e.g. 20 branch node should have atlease 20 items
+
+
+Instructor started Lab
+Employee Attrition
+
+How does a Tree Splitting Works
+It take a top down, greedy approach that is known as recursive binday splitting.
+It is greedy because at each step of the tree building process, the best split is made at that particular step, rather than
+looking ahead and picking a split that will lead to a better tree in some future step.
+
+Implementation steps
+	1. Calculate entropy for each branch or split
+	2. Split the dataset by selecting attribute with highest information gain
+	3. Repeat the above steps on each branch
+	4. A branch with entropy of zero is leaf node
+	
+	
+Decision tree: Gini, Entropy, Misclassification Error (Not used anymore)
+
+Pruning
+	1. Decision tree tends to get overfit with training sample and becomes too large and complex.
+	2. Pruning may be defined as shorteninng the branches of tree
+	3. Pruning is done by controlling the hyperparameter called max depth
+	
+Hyperparameter of DT
+Maximum Depth
+Minimum number of samples per leaf
+Minimum sample split

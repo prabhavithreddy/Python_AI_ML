@@ -1,0 +1,225 @@
+Model Boosting Algorithms
+
+1. Adaboost
+2. Gradient Boosting
+3. XGBoost
+
+
+	Boosting
+	---------
+
+	Can a crowd be smarter then individuals in the crowd
+
+	Binary Classification -> [-1, 1]
+
+	Error  0 - 1
+	if error slightly < 0.5 is a weak classifier
+
+	Strong classifier will have low error
+
+	Can we combine a bunch of weak learning and let them vote to become a strong classifier
+
+	GOAL
+	----
+	Decrease the bias of the model
+
+	Produce an additive model
+	Sequential method
+	
+	
+	Method - Uses decision trees of depth 1 (Decision Stumps)
+	
+	Step 1
+	------
+	Train a decision stump
+	
+	|		|
+	|	-	| ++
+	| -	+ -	| +
+	|	-	| -
+	|_______|____
+	
+	Step 2
+	------
+	Exaggerate/Amplify errors of M1 by increasing weights of misclassified points
+	Updated dataset is passed to Model2
+	
+	|	-	 ++		
+	|____________
+	| -	+.-	 +
+	|	-	 -
+	|___________
+	
+	+. has increased weight now
+	
+	M2 is training on the modified set. So more attention is given to samples where M1 was wrong
+	
+	This step is continued
+	
+	Step 3:
+	------
+	Make a recursive process
+	So each step we re-weight the examples and to check how many of previous examples you got right/wrong
+	
+		  w1 (weighted dataset)
+	M1 -> M2 
+		  |
+		  w2 -> M3 
+				|
+				w3 -> ... wn(till loss is minimized)
+				
+	Adaptive Boosting (AdaBoost)
+	----------------------------
+	
+	N = No.of Samples
+	M = No.of iterative models (Decision Stumps)
+	
+		Step 1
+		------
+			Weight wi = 1/n (initial wt)
+		Step 2
+		------
+			Uses the recursive process
+			for m=1 to M:
+				a. Determine a classifier Gm(x) <- wi
+						    n
+				b. err(m) = E  ei 			(ei = yi - y^)
+						   i=1
+						  
+				c. Obtain Normalized error 
+					Alpha(m) = 1/2 log((1 - err(m))/err(m))
+					
+												 m   |---Actual Output
+				d. wi(m+1) = wi(m) e**(-Alpha(m)h(x)y(x))
+												|_Model Output
+						
+					Since Alpha(m) = 1/2 log((1 - errm)/errm)
+						the error will eventually converge to 0
+						
+			Summary of steps 1 to 4
+				For every weak learning of M:
+				1. Create model on weithts 1/No
+				2. Calculate the error made by the model
+				3. Normalize the error Alpha(m)
+				4. Get new reweighted sample
+				
+		Final Step
+		----------
+			Gm(x) =  Sigma Alpha(m) Gm(x)
+						m
+						
+		For Regression Gm(x) = argmax[Sigma Alpha(m)Gm(x)]
+									   m
+									   
+		For classification = Sigmoid[Sigma Alpha(m)Gm(x)]
+		
+		
+	Gradient Boosting Classifier (GBC)
+	----------------------------------
+		- Sequential Training
+		- Start with a weak learner
+		- Improve performance over time
+		- works well for data with low variance & high bias
+		
+		X -> M1 -> y^
+			 |
+		  (y - y^) Pseudo Residuals -> M2 (Trained on residuals)
+									   |
+									 (y - y^) Pseudo Residuals -> M3 .... Mn till residuals are 0
+									 
+		Calculates the Sum of residual predictions
+		
+		Boosting Output = y^ + Sum(err(m))
+		
+		H(x) = h0(x) + Alpha1 h1(x) + Alpha2 h2(x) + ....+ Alpha.n hn(x)
+				Alpha1 ... Alphan are learning rate
+						n
+				H(x) = Sigma	Alphai.hi(x)
+						i=1
+		N. = 0.001 or 0.01
+		
+		Learning Rate
+		-------------
+		How fast or slow we are going to perform the gradient to reach minimum
+		
+		Gradient = Partial Derivative(y, f(x))
+					-------------------------
+					Partial Derivative f(x)
+					
+			| |     |
+			| |     |
+			| \     /
+			|  \_._/
+			|__________
+			
+			Gradient -> Slope
+			
+	XG Boost
+	--------
+	Xtream Gradiend Boosting
+						 _
+	Objective fn = L + _| |_
+					Loss Function Regularization Function
+				n				j
+	Obj(0) = 	Sigma L(y-y^) + Sigma Omega(fi)
+				i=1				i=1
+				
+				n = no.of samples
+				i = no.of trees
+								  T
+	Omega(f) = VT + (1/2 * lambda Sigma Wj**2)->Sum of weights of the models or weak learners
+								  j=1
+				lambda = regularization term (hyperparameter)
+							similar to learning rate
+							
+				VT -> Another regularization term -> controls the no.of trees
+				V->Gamma ->No.of trees
+				for early stopping
+				T -> n_estimators (no. of trees)
+	
+	Unlike DT's XGBoost uses idea of Gradient Drop
+	
+	Produces two components
+		1. Hessian -> to control impurity
+		2. Gradient
+		
+			SecondOrderDerivative.L(y, f(x))
+			--------------------------------
+			Derivative(f(x)**2)
+			
+	Step 1:
+	-------
+		Fit a decision stump (only one node)
+	Step 2:
+	-------
+		Compute similarity 
+			
+			=  Gradient**2/(Hessian + X)
+			
+			Hessian -> A matrix which is Useful to find the gradient
+						Similar to penalty on Gradient
+	Step 3:
+	-------
+		Split the node and calculate the Gain
+		
+		Gain = (Left Similarity + Right Similarty) - Root Similarity
+		
+	Step 4:
+	-------
+		Tree pruning using Gamma parameter
+		if there is no further loss then e.g. at 250th trees then the process is stopped instead till 1000 Trees
+		
+		
+		if Gain - Gamma < 0 -> Removes the branch 
+		else keep the branch
+		
+	Step 5:
+	-------
+		New value = old value + learning rate * prediction
+		
+		
+	Advantages 
+	----------
+	1. Hardware Optimization (Effective calculations)
+	2. Achieves regularization by doing early stopping 
+	

@@ -1,0 +1,183 @@
+Support Vector Machines (SVM)
+-----------------------------
+Makes use of a hyperplane which acts as a dicision bounday between the various classes
+
+Starting Question
+-----------------
+How to divide a Eculidian Space with a decision bounday
+
+Decision Bounday for Binary Classification
+
+ /+
+y
+ \-
+
+Decision Boundays of various Algorithms
+ 
+|\
+| \	+ +
+|  \ +
+| - \
+|  - \
+|_____\
+
+Logistic Regression
+--------------------
+
+
+|	|
+|	|+
+|-	|
+|  -|
+|	|	+
+|___|______
+
+ID3
+---
+
+|	|	+
+|	|	+
+|	|_____
+|- -
+|___________
+
+Neural Net
+--------
+
+
+How to place a Linear Decision Boundary
+
+Underlying assumption -> Data is linearly seperable
+
+|	  \	\
+|	\  \ \	+
+|-	 \	\ \ + ->Support vector
+|	- \	 \ \
+| (SV) \  \ \
+|____________
+
+There are many lines which could be drawn, which line is the best
+
+SVM takes Widest margin approach that seperates + classes from - classes
+
+The aim is to maximize the margin
+
+Support Vectors -> Extreme points in either classes
+
+How it maximizes the margin is the question
+
+Steps of a linear SVC
+
+	1. To have a decision rule that uses the decision bounday
+		w^ which is a vector perpendicular to the linear line
+		u^ any unknown vector
+		do a dot product w^&u^
+		w^.u^ gives the projection (distance from the point to the w^)
+		
+		if 	w^.u^ >= c then + class
+			w^.u^ - c >=0
+			w^.u^ + b >=0 (b=-c)
+			
+			b is still unknown
+			
+			|w^| ?
+			
+	2. Lay enough constraints on situation so that we can actually calculate b & w
+	
+		For + samples ->  (Known samples)
+		
+			w^.x(+) + b >=1 | Ensures distance of -1 to +1 between margin
+			w^.x(-) + b <=1	|
+		
+		We add a new variable yi ->{-1, +1}
+		
+		multiplying with yi to get 
+			yi(w^.xi + b) >=1
+			yi(w^.xi + b) = 0
+			for xi in the margin
+		GOAL:
+		-----
+		Arrange the lines of the margin as wide as possible (widest street approach)
+			
+	3. Get the width of the street
+		
+		(X(+) - X(-)). w^/(|w^|)
+		
+		width = 2/|w^|
+		
+		By doing the dot product and enforcing the constraint
+		
+		
+		Maximize 2/|w^|
+		Maximize 1/|w^|
+		
+		minimize |w^|
+		
+		Minimize 1/2*(|w^|**2)
+		
+		under constraint -> yi(xi.w^ + b) - 1 =0
+		
+		
+	4. Find the extreme of this function using Langragian multiplier (basicially used to maximize or minimize)
+	
+		L = 1/2|w^|**2 . Ealphai [yi(w^.x^ + b) -1]
+		
+		Partial Derivative 
+		
+		L/w^ -> w^ = Ealplai yi.x^i
+		
+		Note: The maximization depends only on the DOT product of Pairs of samples Xi.Xj
+		
+		
+	Main Points
+	-----------
+	1. Maximization of margin depends only on dot product of pairs of samples in the gutter
+	2. SVM has a convex base so it can never be stuck on Local Maxima (unlike NN's)
+	
+	What if data is linearly seperable 
+		-> Change the perspective by shifting to another space 
+		-> Kernel trick
+		-> Hyper plane to seperate + and - classes
+		
+		
+Any thing which is falling in the median line then it is misclassified
+
+
+	Use Cases
+	----------
+	Very effective in High Dimentional  datasets (Spaces)
+	No.of dimensions > No.of samples
+	Image classification
+	Handwriting recognition
+	Protein classification
+	Gene classification
+	
+	
+Hyperparameters of SVM
+----------------------
+
+Case 1: Non linear decision boundary (100%) - Complicated and overfitting
+Case 2: Linear decision boundary (90%)
+
+1. C = Regularization parameter
+		Controls tradeoff between S1 and S2 models by adding a penalty
+		if C is small -> Larger Margins
+			Some misclassification allowed
+			soft marging
+		if C is large -> Smaller Margins
+			->  Tight fit
+				No misclassification allowed
+				Hard Marging
+				
+2. Gamma
+	- depends how far the influence of a single training example
+	- if it is large -> Close (near by points)
+		mostly a non linear kernal
+	inversly propotional to the radius of influence of samples selected as support vector
+	
+	if small
+		Linear kernal 
+		
+In Industry 
+	0.01 < C < 100
+	0.001 < Gamma < 10

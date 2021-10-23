@@ -1,0 +1,67 @@
+UnSupervised Learning
+---------------------
+
+Performed on data with no labels, we have only features
+Find patterns in the data and group the data into natural groups (Clusters)
+e.g. Finding clusters of customers by their purchase history, (clustering)
+
+e.g. compressing the data using purchase pattern (dimensionality reduction)
+
+Supervised ->Finding patterns for a prediction task 
+e.g. dog/cat classifier
+
+UnSupervised -> We find patterns in the data but without any specific prediction task in mind
+
+- Cluster/Dimensionality reduction 
+
+
+	|
+	|	++ C2		++ C4
+	|			
+	|			++ C3
+	|	++C1
+	|____________
+	
+			Income		Spending
+	C1 -> 3-10 LPA 	|  	7-10k		Good
+	C2 -> 7-15 LPA	|	20 - 30k	Careless
+	C3 -> >20LPA	|	< 10k		Good
+	C4 -> >30LPA	|	> 30k		Target 
+	
+	Result of clustering 
+	---------------------
+	We are able to create groups or clusters in our data that gives a decision insight into the data
+	
+	Model lift -> Predict profit 
+	
+	Targeted advertisement
+	MBA (Market Basket Analysis)
+	
+	
+	Basic idea is similar points are close to each other 
+	
+	Goal of Clustering
+	--------------------
+	To get good quality clusters
+		- They are well seperated
+		- They are tightly fit clusters
+		
+	Get actionable insights
+	-----------------------
+	
+	
+	How to evaluate the clusters 
+	----------------------------
+	
+	1. Visually by graph (Scatter Plot)
+			> 3D (PCA/TSNE)
+	2. DunnIndex|Slihouett Score
+		If DI/SC is high then cluster is better
+		
+	
+	Most used Clustering Algorithms
+	
+	1. K-Means
+	2. Agglomerative Clustering
+	3. DBScan
+	4. Spectral Clustering

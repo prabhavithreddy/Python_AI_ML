@@ -1,0 +1,53 @@
+Hierarchial
+-----------
+1. Agglomerative
+	Bottom up approach
+	Initially each point in its own clusters
+	repeatedly combine two nearest clusters into 1
+	
+2. Divisive
+	Top down approach
+	Start with one cluster and keep splitting recursively 
+
+
+Agglomerative
+-------------
+The key operations is repeatedly combine two nearest clusters into a large cluster
+
+Key question: how to determing the nearness of two clusters
+
+Answer: Nearness of Clusters = Distance between the centroids of the clusters
+
+
+Step 1:
+Each point is its own cluster
+
+	*		x
+   * *		xx
+   
+		______________
+		|		   __|__
+		|		  |		|
+	_______		  |		|
+	|	  |		_____	|
+	|	_____	|	|	|
+	|	|	|	|	|	|
+	o  	o  	o  	o  	o  	o 
+	x1 	x2 	x3 	x4 	x5 	x6
+	
+	DENDROGRAM
+	
+	e.g. species of animals
+	Family tree of how species are evolved
+	
+
+When two clusters are considered nearer
+
+1. Min Distance - Single Linkage
+2. Max Distance -> Complete Linkage
+3. Centroid Linkage -> Avg Linkage
+4. WARD Linkagej
+
+
+
+import scipy.cluster

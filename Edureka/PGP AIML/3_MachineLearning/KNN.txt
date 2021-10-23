@@ -1,0 +1,91 @@
+KNN (K Nearest Neighbors)
+-------------------------
+The k-nearest neighbors algorith is a supervised machine learning algorithm
+
+KNN assumes that similar things exists in close proximity. In the data science, it implies
+that similar data points are close to each other.
+KNN uses similarity to calculate the distance between points on a graph.
+
+Distance 
+	1. Euclidian *
+	2. Manhattan *
+	3. Minkowski's
+	4. Hamming
+	
+	
+	Euclidian
+		Used cooridnate geometry
+		Distance between X1 & X2
+		  _____________________________
+		\/((x1 - x2)**2 + (y1 - y2)**2)
+		
+		 	  _____________________
+	  =	\	 /	n
+		 \  /	Sigma(X1i - X2i)**2
+		  \/		i=1
+		  
+		  
+		  
+	Manhattan (Roads of Manhattan city)
+	
+		|	|	|
+		|___|___|
+		|	|	|
+		|___|___|
+		|	|	|
+		|	|	|
+					n
+	||X1 - X2|| = Sigma |X1i - X2i|
+					i=1
+	
+	
+	KNN How it works
+	1. The algorithm calculates the distance of a new data point to all other
+		training data points. The distance can be of any type. e.g. Euclidian, Manhattan, etc
+	2. The algorithm then sorts the calculated Euclidian distances in ascending order.
+	3. Next, the algorithm selects the k-nearest data points, where k can be any interget.
+		The selection based on the proximity to other data points regardless of what features the numerical values represent
+		
+		
+	Lazy Algorithm
+	1. Maps all points in N-dimentional real space
+	2. new Xq points, distance of Xq from each point
+	3. Sorted list of those distances in ascending order
+	4. Take top k values (generally odd values) then find the majority class
+	
+	Advantanges
+	1. Very easy to implement
+	2. This algorithm can be used for both classification and regression
+	3. Since data is not previously assumed, it is very useful in cased of nonlinear data.
+	4. The algorithm ensures relatively high accuracy
+	
+	Disadvantages
+	-------------
+	1. It is a bit more expensive as it stores the entire training data.
+	2. High memory storage requirements for this algorithm.
+	3. Higher sets of values may lead to inaccurate predictions.
+	4. Highly sensitive to the scale of the data
+	
+	KNN Uses
+	1. KNN is often used in banking systems to identify if an individual or organization is fit for a grant or a loan based on key characteristics
+	2. KNN can be used in Speech Recognition, handwriting detection, Image Recognition and Video Recognition
+	3. A potential voter can be classified into categories based on characteristics (like voter or non-voter) for elections
+	
+	
+	Minkowski:
+	----------
+	|X1-X2|p
+
+		if p==1, then Manhattan
+		if p==2, then Euclidian
+	
+	What is the optimal value of K?
+	------------------------------
+            |___      ___
+			|	\____/
+	Error	|
+			|	 ____
+			| __/    \___
+			|______________
+				K    k
+	

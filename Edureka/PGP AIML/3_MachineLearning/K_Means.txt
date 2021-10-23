@@ -1,0 +1,87 @@
+K Means
+-------
+Assumes a Euclidean Space/distance 
+Finding clusters of samples 
+No of clusters must be specified 
+
+Step -1
+-------
+
+	Start by picking k no.of clusters
+	Initiate these clusters by picking 1 point per cluster 
+
+Step -2
+-------
+	if k==2
+	
+	picks any two points and picks up other points which are nearest to them
+	
+	calculates all the distances from all the points
+	
+	For each point we place it in the cluster where it is nearest to 
+	
+Step -3
+-------
+	We update the location of the centroid for k clusters 
+	
+Step -4
+-------
+	Re-assign all points to their closest centroid 
+	
+Step -5
+-------
+	Re-assign all points to their closest centroid
+		-sometimes move points between clusters
+	
+Step -6
+-------
+	Repeat steps 3,4,5 till we reach convergence 
+	Convergence -points or centroids where points don't migrate
+	we reached stable clustering 
+	
+Important question what is right value of k
+
+Try different values of k and see what works best
+
+Case 1: Two few clusters
+		Very large average distace from centroid
+Case 2: Just right avg. distance 
+
+Case 3: Low average distance but the decrease is not significant 
+
+
+a. Inter cluster distance 
+b. Within cluster distance 
+
+WCSS - Within cluster sum squared
+
+	Plot WCSS vs K and find the elbow points
+	Inertia plot 
+	
+	We pick k by using the inertia plot 
+	
+Question 2:
+------------
+	How do we pick the initial k points 
+	
+	"right k points" as it will affect 
+	1. Convergence
+	2. Cluster Quality
+	
+	Solution: Pick dispersed set of points, points that are as far as possible from each other 
+	
+	1. Pick first point at random 
+	2. Pick next point whose distance from selected points is maximum 
+	3. Repeat the process till k points are choosen 
+	4. Start k means
+	
+	K-Means ++
+	
+Issue of Complexity 
+	N-points 
+	K- Clusters
+	
+	Each round O(kN)
+	
+	Can we cluster in a single pass of the data -> Hierarchial Clustering
+	

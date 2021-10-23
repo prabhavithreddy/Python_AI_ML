@@ -1,0 +1,107 @@
+Naive Bayes
+-------------
+
+It a statistical method for classification
+Supervised Learning method
+Assumes an underlying probabilistic model, the bayes theorem. Can solve problems involving both categorical and continuous valued attributes
+
+
+Bayes theorem gives the conditional probability of an event A given another event B has occured
+
+P(A/B) = (P(B/A)P(A))/P(B)
+
+Where P(A/B) = Conditional Probability of A given B/A
+P(B/A) = Conditional Probability of B given A
+P(A)= Probability of event A (Prior)
+
+Recap on Bayes theorem
+----------------------
+      
+     B
+    /
+   A
+  / \B^
+ /
+/
+\
+ \   B
+  \ /
+   A^
+    \
+	 B^
+	 
+We are interested in P(A/B)
+
+P(A/B) = (P(B/A)P(A))/P(B)
+
+Example
+-------
+P(M1) = 0.8	P(M2) = 0.2
+e = 1%		e = 2%
+
+
+If we pick a defective item we are interested to know, what is the probability that it came from M1 machine given it is defective
+
+P(D/M1) = 0.01
+P(D/M2) = 0.02
+
+P(M1/D) = (P(D/M1)P(M1))/P(D)
+
+P(D) = P(D/M1)*P(M1) + P(D/M2)*P(M2)
+
+P(D) = .012
+
+P(M1/D) = (.01*.8)/.012= 67%
+
+
+
+ML Algos
+	- Discriminative Learning Algorithm 
+		* Logistic Regression (Uses recursive learning)
+		Using Gradient Descent to obtain decision boundary
+	
+	
+	- Generalized Learning Algorithm
+		Generative Learning (Naive Bayes)
+		Learns the model seperately (for 1 & 0) in isolation
+		P(X/+), P(X/-), P(+), P(-) --already learnt
+		
+		P(+/Xq) = 	P(Xq/+)*P(+)
+					-----------
+						P(Xq)
+		Same for - class, which ever has the highest probability that is taken
+		
+		
+	Example
+	
+	P(Buy/Holiday, Discount, Free Delivery) = 	P(H/Buy)*P(D/Buy)*P(FD/Buy) * P(Buy)
+												-----------------------------------
+															P(H).P(D).P(FD)
+															
+	P(!Buy/Holiday, Discount, Free Delivery) = 	P(H/!Buy)*P(D/!Buy)*P(FD/!Buy) * P(!Buy)
+												-----------------------------------
+															P(H).P(D).P(FD)
+	
+	We could multiply only when the features are independent
+	Naive - Simple (It assumes independence among the featues which is not true in real life)
+	Used carefully
+	
+	
+	Advantages
+		1. Works very quickly
+		2. is suitable for solving multi-class prediction problems
+		3. Assumption of independence of features holds true
+		4. Better suited for categorical input variables than numerical variables
+		
+	Disadvantages
+		1. Assumes that all predictors are independent
+		2. Faces the 'zero-frequency problem' where it assigns zero probability to a categorical variables
+			whose categor in the test data set wasn't available in the training dataset. It would be best if you
+			used a smoothing technique to overcome this issue.
+		3. Its estimations can be wrong in some cases, so you shouldn't take its probability outputs very seriously
+		
+		
+	Use Cases
+	1. Text classification
+	2. Sentiment Analysis
+	3. Recommender Systems
