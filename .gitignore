@@ -20,6 +20,9 @@ ec# tf state files
 
 venva/
 
+# Images
+archive/
+
 # Distribution / packaging
 .Python
 build/
