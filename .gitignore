@@ -20,6 +20,11 @@ ec# tf state files
 
 venva/
 
+# Data Files
+*.csv
+*.avi
+*.txt
+
 # Images
 archive/
 
