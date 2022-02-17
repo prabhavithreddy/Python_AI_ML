@@ -18,6 +18,8 @@ ec# tf state files
 .tfstate
 .backup
 
+dataset/
+
 venva/
 
 # Data Files
